@@ -1,12 +1,13 @@
 defmodule CitaDappStore.Organization.Chain do
   use Ecto.Schema
   import Ecto.Changeset
-
+  alias CitaDappStore.Store.Dapp
 
   schema "chains" do
-    field :desc, :string
-    field :name, :string
-    field :server, :string
+    field(:desc, :string)
+    field(:name, :string)
+    field(:server, :string)
+    has_many(:dapps, Dapp)
 
     timestamps()
   end

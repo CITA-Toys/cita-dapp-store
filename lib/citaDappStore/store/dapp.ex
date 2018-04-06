@@ -2,13 +2,17 @@ defmodule CitaDappStore.Store.Dapp do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias CitaDappStore.Accounts.User
+  alias CitaDappStore.Organization.Chain
 
   schema "dapps" do
-    field :abi, :string
-    field :addr, :string
-    field :cover, :string
-    field :desc, :string
-    field :name, :string
+    field(:abi, :string)
+    field(:addr, :string)
+    field(:cover, :string)
+    field(:desc, :string)
+    field(:name, :string)
+    belongs_to(:user, User)
+    belongs_to(:chain, Chain)
 
     timestamps()
   end
