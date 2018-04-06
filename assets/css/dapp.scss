@@ -1,0 +1,15 @@
+.dapp-library {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px 20px;
+  .dapp-item {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    .dapp-cover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

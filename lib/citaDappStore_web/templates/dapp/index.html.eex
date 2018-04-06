@@ -1,34 +1,10 @@
-<h2>Listing Dapps</h2>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Cover</th>
-      <th>Addr</th>
-      <th>Abi</th>
-      <th>Desc</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for dapp <- @dapps do %>
-    <tr>
-      <td><%= dapp.name %></td>
-      <td><%= dapp.cover %></td>
-      <td><%= dapp.addr %></td>
-      <td><%= dapp.abi %></td>
-      <td><%= dapp.desc %></td>
-
-      <td class="text-right">
-        <span><%= link "Show", to: dapp_path(@conn, :show, dapp), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: dapp_path(@conn, :edit, dapp), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: dapp_path(@conn, :delete, dapp), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
+<h2>Dapp Library</h2>
 <span><%= link "New Dapp", to: dapp_path(@conn, :new) %></span>
+<div class="dapp-library">
+  <%= for dapp <- @dapps do %>
+      <div class="dapp-item">
+        <%= img_tag dapp.cover, alt: dapp.name, class: "dapp-cover" %>
+        <%= link dapp.name, to: dapp_path(@conn, :show, dapp), class: "dapp-title" %>
+      </div>
+  <% end %>
+</div>
