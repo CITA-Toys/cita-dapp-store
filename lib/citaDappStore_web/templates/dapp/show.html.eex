@@ -1,0 +1,33 @@
+<h2>Show Dapp</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @dapp.name %>
+  </li>
+
+  <li>
+    <strong>Cover:</strong>
+    <%= @dapp.cover %>
+  </li>
+
+  <li>
+    <strong>Addr:</strong>
+    <%= @dapp.addr %>
+  </li>
+
+  <li>
+    <strong>Abi:</strong>
+    <%= @dapp.abi %>
+  </li>
+
+  <li>
+    <strong>Desc:</strong>
+    <%= @dapp.desc %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: dapp_path(@conn, :edit, @dapp) %></span>
+<span><%= link "Back", to: dapp_path(@conn, :index) %></span>

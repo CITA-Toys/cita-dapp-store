@@ -1,0 +1,30 @@
+<h2>Listing Chains</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Server</th>
+      <th>Desc</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for chain <- @chains do %>
+    <tr>
+      <td><%= chain.name %></td>
+      <td><%= chain.server %></td>
+      <td><%= chain.desc %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: chain_path(@conn, :show, chain), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: chain_path(@conn, :edit, chain), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: chain_path(@conn, :delete, chain), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Chain", to: chain_path(@conn, :new) %></span>

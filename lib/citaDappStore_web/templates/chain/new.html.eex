@@ -1,0 +1,5 @@
+<h2>New Chain</h2>
+
+<%= render "form.html", Map.put(assigns, :action, chain_path(@conn, :create)) %>
+
+<span><%= link "Back", to: chain_path(@conn, :index) %></span>

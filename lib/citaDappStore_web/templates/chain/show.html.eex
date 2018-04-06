@@ -1,0 +1,23 @@
+<h2>Show Chain</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @chain.name %>
+  </li>
+
+  <li>
+    <strong>Server:</strong>
+    <%= @chain.server %>
+  </li>
+
+  <li>
+    <strong>Desc:</strong>
+    <%= @chain.desc %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: chain_path(@conn, :edit, @chain) %></span>
+<span><%= link "Back", to: chain_path(@conn, :index) %></span>

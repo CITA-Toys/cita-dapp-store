@@ -1,0 +1,5 @@
+<h2>Edit Dapp</h2>
+
+<%= render "form.html", Map.put(assigns, :action, dapp_path(@conn, :update, @dapp)) %>
+
+<span><%= link "Back", to: dapp_path(@conn, :index) %></span>
