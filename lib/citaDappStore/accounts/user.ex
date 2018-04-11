@@ -2,12 +2,14 @@ defmodule CitaDappStore.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias CitaDappStore.Store.Dapp
+  alias CitaDappStore.Posts.Article
 
   schema "users" do
     field(:addr, :string)
     field(:avatar, :string)
     field(:username, :string)
     has_many(:dapps, Dapp)
+    has_many(:articles, Article)
 
     timestamps()
   end

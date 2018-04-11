@@ -1,0 +1,24 @@
+.article-list {
+  max-width: 920px;
+  margin: 0 auto;
+  .item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .title,
+    .time {
+      font-size: 2rem;
+      font-family: PingFangSC-Light, 'Source Han Sans', 'Microsoft YaHei';
+    }
+    .title a {
+      font-weight: bolder;
+      color: #000 !important;
+      &:hover {
+        text-overflow: none !important;
+      }
+    }
+  }
+}

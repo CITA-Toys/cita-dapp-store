@@ -1,0 +1,13 @@
+
+
+<div class="page-header">
+   <h1> <%= @article.title %> </h1>
+</div>
+
+<%= @article.content %>
+
+<%= if false do %>
+<span><%= link "Edit", to: article_path(@conn, :edit, @article) %></span>
+<span><%= link "Delete", to: article_path(@conn, :delete, @article), method: :delete, data: [confirm: "Are you sure?"] %></span>
+<span><%= link "Back", to: article_path(@conn, :index) %></span>
+<% end %>

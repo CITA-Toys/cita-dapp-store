@@ -34,6 +34,39 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: articles; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.articles (
+    id bigint NOT NULL,
+    title character varying(255),
+    content text,
+    author_id bigint,
+    inserted_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.articles_id_seq OWNED BY public.articles.id;
+
+
+--
 -- Name: chains; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -147,6 +180,13 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: articles id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles ALTER COLUMN id SET DEFAULT nextval('public.articles_id_seq'::regclass);
+
+
+--
 -- Name: chains id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -165,6 +205,14 @@ ALTER TABLE ONLY public.dapps ALTER COLUMN id SET DEFAULT nextval('public.dapps_
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: articles articles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
 
 
 --
@@ -200,6 +248,13 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: articles_author_id_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX articles_author_id_index ON public.articles USING btree (author_id);
+
+
+--
 -- Name: chains_server_index; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -218,6 +273,14 @@ CREATE UNIQUE INDEX dapps_addr_index ON public.dapps USING btree (addr);
 --
 
 CREATE UNIQUE INDEX users_addr_index ON public.users USING btree (addr);
+
+
+--
+-- Name: articles articles_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_author_id_fkey FOREIGN KEY (author_id) REFERENCES public.users(id) ON DELETE CASCADE;
 
 
 --
@@ -240,5 +303,5 @@ ALTER TABLE ONLY public.dapps
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO public."schema_migrations" (version) VALUES (20180406114613), (20180406115232), (20180406115350), (20180406115948);
+INSERT INTO public."schema_migrations" (version) VALUES (20180406114613), (20180406115232), (20180406115350), (20180406115948), (20180411060852);
 

@@ -21,10 +21,6 @@ defmodule CitaDappStoreWeb.Router do
     resources("/users", UserController)
     resources("/dapps", DappController)
     resources("/chains", ChainController)
+    resources("/articles", ArticleController)
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", CitaDappStoreWeb do
-  #   pipe_through :api
-  # end
 end

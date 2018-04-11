@@ -1,0 +1,12 @@
+<div class="list-group article-list">
+  <%= for article <- @articles do %>
+    <button type="button" class="item list-group-item">
+      <div class="title">
+        <%= link article.title, to: article_path(@conn, :show, article)%>
+      </div>
+      <div class="time">
+        <%= article.updated_at |> timeFormatter %>
+      </div>
+    </button>
+  <% end %>
+</div>
